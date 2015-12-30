@@ -5,9 +5,9 @@
 
 
 ### Installation
-    *   `npm install`
-    *   `bower install`
+
+    *   ```npm install
 
 ### Lunch Server
-    *   `mongod`
-    *   `npm install nodemon -g` - This package will reload server when we make changes to files
+    *   ```mongod```
+    *   ```npm install nodemon -g``` - This package will reload server when we make changes to files

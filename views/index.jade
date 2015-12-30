@@ -1,0 +1,41 @@
+extends .././node_modules/jade-bootstrap/_bootstrap
+
+block body
+    .container
+        .row
+            .col-md-4.col-md-offset-4
+                h3.text-center.text-uppercase Todo list
+                hr
+            .col-md-4.col-md-offset-4
+                form(method="POST", action="/", id="addTodo")
+                    .input-group
+                        input(type="text", name="todo", id="todo").form-control
+                        .input-group-btn
+                            +submit('Add', 'btn btn-success')
+            .col-md-4.col-md-offset-4
+                br
+                br
+                if (noValue)
+                    p no value
+                ul.list-group
+                    - var i = 0
+                    for todo in todos
+                        - i = (i + 1)
+                        li.list-group-item
+                            if todo.done
+                                del
+                                    | #{i}.  #{todo.item}
+                            else
+                                | #{i}.  #{todo.item}
+                            a(href="#{todo._id}/delete").label.label-danger.pull-right Delete
+                            if todo.done
+                                a(href="#{todo._id}/update").label.label-warning.pull-right Done
+                            else
+                                a(href="#{todo._id}/update").label.label-info.pull-right Undone
+
+block scripts
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
+    script(src="/js/main.js")
+    //script(src="js/jquery.min.js")
+    //script(src="js/bootstrap.min.js")
